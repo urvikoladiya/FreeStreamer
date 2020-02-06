@@ -198,7 +198,7 @@ public:
     void audioStreamErrorOccurred(int errorCode, CFStringRef errorDescription);
     void audioStreamStateChanged(astreamer::Audio_Stream::State state);
     void audioStreamMetaDataAvailable(std::map<CFStringRef,CFStringRef> metaData);
-    void samplesAvailable(AudioBufferList *samples, UInt32 frames, AudioStreamPacketDescription description, AudioQueueRef audioQueueRef, AudioTimeStamp currentTime);
+    void samplesAvailable(AudioBufferList *samples, UInt32 frames, AudioStreamPacketDescription description, AudioQueueRef audioQueueRef, AudioTimeStamp currentTime AudioStreamBasicDescription basicDescription);
     void bitrateAvailable();
 };
 
@@ -1892,10 +1892,10 @@ void AudioStreamStateObserver::audioStreamMetaDataAvailable(std::map<CFStringRef
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
-void AudioStreamStateObserver::samplesAvailable(AudioBufferList *samples, UInt32 frames, AudioStreamPacketDescription description, AudioQueueRef audioQueueRef, AudioTimeStamp currentTime)
+void AudioStreamStateObserver::samplesAvailable(AudioBufferList *samples, UInt32 frames, AudioStreamPacketDescription description, AudioQueueRef audioQueueRef, AudioTimeStamp currentTime AudioStreamBasicDescription)
 {
-    if ([priv.delegate respondsToSelector:@selector(audioStream:samplesAvailable:frames:description:audioQueueRef:currentTime:)]) {
-        [priv.delegate audioStream:priv.stream samplesAvailable:samples frames:frames description:description audioQueueRef:audioQueueRef currentTime:currentTime];
+    if ([priv.delegate respondsToSelector:@selector(audioStream:samplesAvailable:frames:description:audioQueueRef:currentTime:basicDescription:)]) {
+        [priv.delegate audioStream:priv.stream samplesAvailable:samples frames:frames description:description audioQueueRef:audioQueueRef currentTime:currentTime basicDescription:basicDescription];
     }
 }
 

@@ -11,6 +11,7 @@
 #import <CoreAudioTypes/CoreAudioBaseTypes.h>
 #else
 #import <CoreAudio/CoreAudioTypes.h>
+#import <AudioToolBox/AudioToolBox.h>
 #endif
 
 /**

@@ -46,7 +46,7 @@ public:
     void setVolume(float volume);
     void setPlayRate(float playRate);
     
-    AudioQueueRef queueRef()
+    AudioQueueRef queueRef();
     AudioTimeStamp currentTime();
     AudioQueueLevelMeterState levels();
 	

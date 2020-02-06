@@ -70,7 +70,7 @@ Audio_Queue::Audio_Queue()
         AQ_TRACE("m_bufferFreeCondition init failed!\n");
     }
 }
-    
+   
 Audio_Queue::~Audio_Queue()
 {
     stop(true);
@@ -212,6 +212,11 @@ void Audio_Queue::stop(bool stopImmediately)
     }
     
     AQ_TRACE("%s: leave\n", __PRETTY_FUNCTION__);
+}
+ 
+AudioQueueRef Audio_Queue::queueRef()  
+{
+    return m_outAQ;
 }
     
 AudioTimeStamp Audio_Queue::currentTime()

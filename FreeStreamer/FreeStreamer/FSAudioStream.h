@@ -600,5 +600,5 @@ NSString*             freeStreamerReleaseVersion(void);
  * @param frames The number of frames.
  * @param description Description of the data provided.
  */
-- (void)audioStream:(FSAudioStream *)audioStream samplesAvailable:(AudioBufferList *)samples frames:(UInt32)frames description: (AudioStreamPacketDescription)description;
+- (void)audioStream:(FSAudioStream *)audioStream samplesAvailable:(AudioBufferList *)samples frames:(UInt32)frames description: (AudioStreamPacketDescription)description audioQueueRef:(AudioQueueRef)audioQueueRef currentTime:(AudioTimeStamp)currentTime;
 @end

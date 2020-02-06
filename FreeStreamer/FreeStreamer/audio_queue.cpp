@@ -213,7 +213,12 @@ void Audio_Queue::stop(bool stopImmediately)
     
     AQ_TRACE("%s: leave\n", __PRETTY_FUNCTION__);
 }
- 
+
+AudioStreamBasicDescription Audio_Queue::basicDescription()  
+{
+    return m_streamDesc;
+}    
+    
 AudioQueueRef Audio_Queue::queueRef()  
 {
     return m_outAQ;
